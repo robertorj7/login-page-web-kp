@@ -10,7 +10,6 @@ interface LoginForm {
   password: FormControl  
 }
 
-
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -45,7 +44,7 @@ export class LoginComponent {
       this.loginForm.value.password
     ).subscribe({
       next: () => this.toastService.success("Login feito com sucesso!"),
-      error: (err) => this.toastService.error("Erro inesperado! Tente novamente mais tarde."),
+      error: () => this.toastService.error("Erro inesperado! Tente novamente mais tarde."),
     });
   }
 

@@ -21,6 +21,7 @@ import { LoginService } from '../../services/login.service';
 })
 export class LoginComponent {
   loginForm!: FormGroup;
+  toastService: any;
 
   constructor(
     private router: Router, 
@@ -37,8 +38,8 @@ export class LoginComponent {
       this.loginForm.value.email,
       this.loginForm.value.password
     ).subscribe({
-      next: () => this.router.navigate(["/"]),
-      error: (err) => console.error(err)
+      next: () => this.toastService.success("Login feito com sucesso!"),
+      error: (err) => this.toastService.error("Erro inesperado! Tente novamente mais tarde."),
     });
   }
 

@@ -4,6 +4,7 @@ import { FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angula
 import { PrimaryInputComponent } from "../../components/primary-input/primary-input.component";
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
+import { ToastrService } from 'ngx-toastr';
 
 interface SignupForm {
   name: FormControl,
@@ -27,19 +28,19 @@ interface SignupForm {
   styleUrl: './signup.component.scss'
 })
 export class SignupComponent {
-  signupForm!: FormGroup<SignupForm>;
-  toastService: any;
+  signupForm!: FormGroup<SignupForm>;  
 
   constructor(
     private router: Router, 
-    private loginService: LoginService
+    private loginService: LoginService,
+    private toastService: ToastrService
   ) {
     this.signupForm = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.minLength(3)]),
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(6)]),
       passwordConfirm: new FormControl('', [Validators.required, Validators.minLength(6)])
-    });
+    })
   }
 
   submit() {

@@ -25,7 +25,7 @@ export class LoginService {
   signup(name: string, email: string, password: string) {
     const body = { name, email, password };
 
-    return this.httpClient.post<LoginResponse>(`${this.apiUrl}/signup`, body).pipe(      
+    return this.httpClient.post<LoginResponse>(`${this.apiUrl}/register`, body).pipe(      
       tap(response => {
         sessionStorage.setItem("auth-token", response.token);
         sessionStorage.setItem("username", response.name);

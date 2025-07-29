@@ -4,9 +4,9 @@
     secondaryBtnText="Login Now"
     (submit)="submit()"
     (navigate)="navigate()"
-    [disablePrimaryBtn]="signupForm.invalid"
+    [disablePrimaryBtn]="!signupForm.valid"
 >
-    <form [formGroup]="signupForm" class="login-form">
+    <form [formGroup]="signupForm">
         <app-primary-input
             formControlName="name"
             inputName="name"

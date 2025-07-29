@@ -16,7 +16,7 @@ export class LoginService {
 
     return this.httpClient.post<LoginResponse>(`${this.apiUrl}/login`, body).pipe(      
       tap(response => {
-        sessionStorage.setItem("authToken", response.token);
+        sessionStorage.setItem("auth-token", response.token);
         sessionStorage.setItem("username", response.name);
       })
     );
@@ -27,7 +27,7 @@ export class LoginService {
 
     return this.httpClient.post<LoginResponse>(`${this.apiUrl}/signup`, body).pipe(      
       tap(response => {
-        sessionStorage.setItem("authToken", response.token);
+        sessionStorage.setItem("auth-token", response.token);
         sessionStorage.setItem("username", response.name);
       })
     );
